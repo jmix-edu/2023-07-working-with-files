@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
         caption="msg://taskBrowse.caption"
         focusComponent="tasksTable">
     <data readOnly="true">
@@ -52,6 +51,7 @@
                 <column id="assignee"/>
                 <column id="project"/>
                 <column id="priority"/>
+                <column id="attachment"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
@@ -60,6 +60,10 @@
                 <button id="editBtn" action="tasksTable.edit"/>
                 <button id="removeBtn" action="tasksTable.remove"/>
                 <button id="importBtn" caption="msg://importBtn.caption"/>
+                <fileStorageUpload id="importTasksField"
+                                   uploadButtonIcon="CLOUD"
+                                   uploadButtonCaption="msg://uploadTasks.caption"
+                                   fileStoragePutMode="MANUAL"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

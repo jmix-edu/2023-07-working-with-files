@@ -1,5 +1,6 @@
 package com.company.tm.entity;
 
+import io.jmix.core.FileRef;
 import io.jmix.core.HasTimeZone;
 import io.jmix.core.annotation.Secret;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
@@ -9,6 +10,7 @@ import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import io.jmix.security.authentication.JmixUserDetails;
 import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Collection;
@@ -23,9 +25,18 @@ import java.util.UUID;
 public class User implements JmixUserDetails, HasTimeZone {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     @JmixGeneratedValue
     private UUID id;
+
+    @Column(name = "DOCUMENT1", length = 1024)
+    private FileRef document1;
+
+    @Column(name = "DOCUMENT2", length = 1024)
+    private FileRef document2;
+
+    @Column(name = "AVATAR")
+    private byte[] avatar;
 
     @Version
     @Column(name = "VERSION", nullable = false)
@@ -57,6 +68,30 @@ public class User implements JmixUserDetails, HasTimeZone {
 
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
+
+    public FileRef getDocument2() {
+        return document2;
+    }
+
+    public void setDocument2(FileRef document2) {
+        this.document2 = document2;
+    }
+
+    public FileRef getDocument1() {
+        return document1;
+    }
+
+    public void setDocument1(FileRef document1) {
+        this.document1 = document1;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
+    }
 
     public UUID getId() {
         return id;
