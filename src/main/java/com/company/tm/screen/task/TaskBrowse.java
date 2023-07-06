@@ -47,8 +47,6 @@ public class TaskBrowse extends StandardLookup<Task> {
     private DataManager dataManager;
     @Autowired
     private CollectionContainer<Task> tasksDc;
-    @Autowired
-    private FileStorage fileStorage;
 
 
     @Subscribe("importBtn")
